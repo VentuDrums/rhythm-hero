@@ -1,6 +1,8 @@
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
+  // En GitHub Pages la web vive en /rhythm-hero/; el workflow de despliegue pasa BASE_PATH.
+  base: process.env.BASE_PATH ?? '/',
   test: {
     environment: 'jsdom',
     include: ['tests/**/*.test.ts'],
