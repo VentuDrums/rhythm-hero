@@ -74,12 +74,12 @@ Usa una envolvente de energía, un umbral adaptativo y un periodo refractario. I
 (ráfagas de ruido) para los tests, con ruido de fondo y clics de metrónomo.
 
 **Acceptance criteria:**
-- [ ] Con palmas sintéticas a tiempos conocidos: ≥ 95 % detectadas con error ≤ 20 ms
-- [ ] ≤ 5 % de falsos positivos con ruido de fondo moderado
-- [ ] Una palmada larga o con eco no se cuenta dos veces (refractario)
+- [x] Con palmas sintéticas a tiempos conocidos: ≥ 95 % detectadas con error ≤ 20 ms
+- [x] ≤ 5 % de falsos positivos con ruido de fondo moderado
+- [x] Una palmada larga o con eco no se cuenta dos veces (refractario)
 
 **Verification:**
-- [ ] Tests pass: `npm test -- audio`
+- [x] Tests pass: `npm test -- audio`
 
 **Dependencies:** T1b
 
