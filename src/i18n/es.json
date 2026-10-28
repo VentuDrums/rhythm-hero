@@ -60,5 +60,21 @@
   "summary.failed": "Casi. Necesitas un {pass} % para superarlo.",
   "summary.again": "Repetir",
   "summary.menu": "Volver al menú",
-  "summary.score": "Tu partitura, coloreada por resultado"
+  "summary.score": "Tu partitura, coloreada por resultado",
+  "home.calibrate": "Calibrar",
+  "cal.title": "Calibración",
+  "cal.intro": "Así el juego sabe cuánto tarda tu dispositivo en oír cada palmada. Suena un compás de claves; después da 8 palmas siguiendo la luz, igual que en el juego.",
+  "cal.current": "Retraso guardado en este dispositivo: {ms} ms.",
+  "cal.none": "Este dispositivo aún no está calibrado.",
+  "cal.start": "Empezar calibración",
+  "cal.status.listen": "Escucha las claves…",
+  "cal.status.play": "Da 8 palmas siguiendo la luz.",
+  "cal.ok": "Listo: tu retraso es de {ms} ms. Guardado en este dispositivo.",
+  "cal.notSaved": "Listo: tu retraso es de {ms} ms. El navegador no deja guardarlo, así que solo vale hasta que cierres la página.",
+  "cal.error.few": "No se han oído suficientes palmas. Acércate al micrófono y repite.",
+  "cal.error.spread": "Las palmas han salido muy irregulares. Repite siguiendo la luz con calma.",
+  "cal.error.range": "El resultado no es fiable. Repite la calibración.",
+  "cal.toPlay": "Ir a Leer y tocar",
+  "play.uncalibrated": "Este dispositivo aún no está calibrado. Calibrarlo hace que la puntuación sea más justa.",
+  "play.calibrate": "Calibrar ahora"
 }

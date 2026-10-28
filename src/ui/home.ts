@@ -7,6 +7,7 @@ export function mountHome(root: HTMLElement): () => void {
     <p class="tagline" data-i18n="home.tagline"></p>
     <nav class="menu">
       <a class="button" href="#/leer" data-i18n="home.play"></a>
+      <a class="button secondary" href="#/calibrar" data-i18n="home.calibrate"></a>
       <a class="button secondary" href="#/micro" data-i18n="home.micTest"></a>
       <a class="button secondary" href="#/partitura" data-i18n="home.notation"></a>
     </nav>`;

@@ -1,4 +1,5 @@
 import { applyTranslations, getLang, setLang } from './i18n';
+import { mountCalibration } from './ui/calibrationScreen';
 import { mountHome } from './ui/home';
 import { mountMicTester } from './ui/micTester';
 import { mountNotationPreview } from './ui/notationPreview';
@@ -9,6 +10,7 @@ const routes: Record<string, (root: HTMLElement) => () => void> = {
   '#/micro': mountMicTester,
   '#/partitura': mountNotationPreview,
   '#/leer': mountReadAndPlay,
+  '#/calibrar': mountCalibration,
 };
 
 const app = document.querySelector<HTMLElement>('#app') as HTMLElement;

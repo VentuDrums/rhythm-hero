@@ -60,5 +60,21 @@
   "summary.failed": "Almost. You need {pass} % to pass.",
   "summary.again": "Play again",
   "summary.menu": "Back to menu",
-  "summary.score": "Your score, coloured by result"
+  "summary.score": "Your score, coloured by result",
+  "home.calibrate": "Calibrate",
+  "cal.title": "Calibration",
+  "cal.intro": "This lets the game know how long your device takes to hear each clap. You hear one bar of claves; then clap 8 times following the light, just like in the game.",
+  "cal.current": "Delay saved on this device: {ms} ms.",
+  "cal.none": "This device has not been calibrated yet.",
+  "cal.start": "Start calibration",
+  "cal.status.listen": "Listen to the claves…",
+  "cal.status.play": "Clap 8 times following the light.",
+  "cal.ok": "Done: your delay is {ms} ms. Saved on this device.",
+  "cal.notSaved": "Done: your delay is {ms} ms. The browser won't let us save it, so it only lasts until you close the page.",
+  "cal.error.few": "Not enough claps were heard. Move closer to the microphone and try again.",
+  "cal.error.spread": "The claps were very uneven. Try again, calmly following the light.",
+  "cal.error.range": "The result isn't reliable. Please calibrate again.",
+  "cal.toPlay": "Go to Read and play",
+  "play.uncalibrated": "This device has not been calibrated yet. Calibrating makes scoring fairer.",
+  "play.calibrate": "Calibrate now"
 }

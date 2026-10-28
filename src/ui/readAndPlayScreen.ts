@@ -7,6 +7,7 @@ import { ReadAndPlayRun } from '../modes/readAndPlay';
 import type { RenderedExercise } from '../notation/render';
 import { xAtTicks } from '../notation/scroll';
 import { beatTicks, measureTicks } from '../rhythm/duration';
+import { getLatency } from '../storage/settings';
 import type { Exercise, RhythmEvent } from '../rhythm/types';
 import { DEFAULT_SCORE_OPTIONS, type Judgement, type RunScore } from '../scoring/score';
 
@@ -27,6 +28,9 @@ export function mountReadAndPlay(root: HTMLElement): () => void {
     <h1 data-i18n="play.title" tabindex="-1"></h1>
     <p data-i18n="play.intro"></p>
     <p class="note" data-i18n="play.level" data-i18n-params='{"bpm":${exercise.bpm}}'></p>
+    <p id="uncalibrated" class="note" hidden>
+      <span data-i18n="play.uncalibrated"></span> <a href="#/calibrar" data-i18n="play.calibrate"></a>
+    </p>
     <p id="error" class="error" role="alert"></p>
     <section id="game">
       <div class="stage">
@@ -73,6 +77,7 @@ export function mountReadAndPlay(root: HTMLElement): () => void {
   const start = $<HTMLButtonElement>('start');
   const stop = $<HTMLButtonElement>('stop');
   const summary = $('summary');
+  $('uncalibrated').hidden = getLatency() !== null;
 
   let ctx: AudioContext | null = null;
   let detector: DetectorConnection | null = null;
@@ -153,7 +158,7 @@ export function mountReadAndPlay(root: HTMLElement): () => void {
     game.hidden = false;
     start.hidden = true;
     stop.hidden = false;
-    const current = new ReadAndPlayRun(exercise, { startTime: audio.currentTime + LEAD_IN_S });
+    const current = new ReadAndPlayRun(exercise, { startTime: audio.currentTime + LEAD_IN_S, latencyS: getLatency() ?? 0 });
     run = current;
     for (const time of current.plan.countIn) playClave(audio, time);
     setText(status, 'play.status.listen');

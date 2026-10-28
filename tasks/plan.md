@@ -71,7 +71,7 @@ Las tareas con todo el detalle están en [todo.md](todo.md).
 - [x] T5: Puntuación
 - [x] T6: Notación con VexFlow
 - [x] T7: Leer y tocar jugable con un nivel fijo
-- [ ] T8: Calibración de latencia
+- [x] T8: Calibración de latencia
 
 ### Checkpoint 2: se puede jugar un nivel completo
 - [ ] Un nivel de negras en 4/4 a 80 BPM, jugado bien tras calibrar, da ≥ 90 % de "perfecto"

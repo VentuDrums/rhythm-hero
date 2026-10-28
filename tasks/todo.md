@@ -189,12 +189,12 @@ feedback en vivo por figura y pantalla de resumen. Usa un nivel fijo de negras e
 y guardado por dispositivo. Leer y tocar la descuenta. Se puede repetir desde ajustes.
 
 **Acceptance criteria:**
-- [ ] La latencia calculada es la mediana de las diferencias, descartando valores atípicos
-- [ ] Se guarda en `localStorage` y se aplica en la partida
-- [ ] Si la dispersión es muy alta, se pide repetir la calibración
+- [x] La latencia calculada es la mediana de las diferencias, descartando valores atípicos
+- [x] Se guarda en `localStorage` y se aplica en la partida
+- [x] Si la dispersión es muy alta, se pide repetir la calibración
 
 **Verification:**
-- [ ] Tests pass: `npm test -- calibration`
+- [x] Tests pass: `npm test -- calibration`
 - [ ] Manual check: tras calibrar, el nivel de negras a 80 BPM da ≥ 90 % de "perfecto" tocando bien
 
 **Dependencies:** T7
@@ -204,7 +204,7 @@ y guardado por dispositivo. Leer y tocar la descuenta. Se puede repetir desde aj
 **Estimated scope:** M
 
 ## Checkpoint 2: se puede jugar un nivel completo
-- [ ] Tests en verde y build limpio
+- [x] Tests en verde y build limpio
 - [ ] Criterio 3 del SPEC comprobado en PC y móvil
 - [ ] Revisión con Carlos
 
