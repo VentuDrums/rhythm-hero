@@ -13,6 +13,11 @@
   box-sizing: border-box;
 }
 
+/* Lo oculto se oculta siempre, aunque otra regla (p. ej. .button) le dé display. */
+[hidden] {
+  display: none !important;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -82,6 +87,12 @@ body {
   font-size: 1.125rem;
   text-decoration: none;
   cursor: pointer;
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--text);
+  box-shadow: inset 0 0 0 2px var(--accent);
 }
 
 .button:disabled {
@@ -255,4 +266,81 @@ h1:focus {
 .score .miss text {
   fill: #c62828;
   stroke: #c62828;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 80px;
+  margin: 16px 0;
+}
+
+.judge {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.judge.perfect {
+  color: #6ee7a8;
+}
+
+.judge.early,
+.judge.late {
+  color: #ffb066;
+}
+
+.judge.miss {
+  color: #ff8a8a;
+}
+
+/* Carril: la partitura se desliza de derecha a izquierda y se toca al cruzar la línea. */
+.lane {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #fffdf6;
+}
+
+.track {
+  width: max-content;
+  padding: 0;
+  border-radius: 0;
+  will-change: transform;
+}
+
+.track svg {
+  width: auto;
+  max-width: none;
+}
+
+.hit-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25%;
+  width: 4px;
+  margin-left: -2px;
+  background: var(--accent);
+  opacity: 0.8;
+}
+
+.summary .big {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.stars {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin: 0;
 }

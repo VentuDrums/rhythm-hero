@@ -1,7 +1,9 @@
 // Dibuja un ejercicio como partitura rítmica de una línea con VexFlow (SPEC.md, "Contenido musical").
 import { Barline, Beam, Dot, Font, Formatter, Renderer, Stave, StaveNote, VexFlow, Voice } from 'vexflow/core';
 import { Gonville } from 'vexflow-gonville';
+import { eventTicks } from '../rhythm/duration';
 import type { Judgement } from '../scoring/score';
+import type { Anchor } from './scroll';
 import type { Duration, Exercise, RhythmEvent } from '../rhythm/types';
 
 const VF_DURATION: Record<Duration, string> = { whole: 'w', half: 'h', quarter: 'q', eighth: '8', sixteenth: '16' };
@@ -38,6 +40,8 @@ export interface RenderedExercise {
   svg: SVGSVGElement;
   /** Un elemento por figura que se toca (sin silencios), en orden. */
   notes: SVGElement[];
+  /** Posición x de cada figura o silencio según su tick (y el final). Útil si todo está en una fila. */
+  anchors: Anchor[];
   /** Colorea la figura n según el resultado. */
   mark(index: number, judgement: Judgement): void;
 }
@@ -59,6 +63,8 @@ export function renderExercise(container: HTMLDivElement, exercise: Exercise, op
   const measureWidth = (options.width - FIRST_MEASURE_EXTRA - 2) / perRow;
 
   const playable: StaveNote[] = [];
+  const anchors: Anchor[] = [];
+  let ticks = 0;
   exercise.measures.forEach((events, i) => {
     const row = Math.floor(i / perRow);
     const col = i % perRow;
@@ -77,8 +83,12 @@ export function renderExercise(container: HTMLDivElement, exercise: Exercise, op
     voice.draw(context, stave);
     beams.forEach((beam) => beam.setContext(context).draw());
     events.forEach((event, j) => {
-      if (!event.rest) playable.push(notes[j] as StaveNote);
+      const note = notes[j] as StaveNote;
+      if (!event.rest) playable.push(note);
+      anchors.push({ ticks, x: note.getAbsoluteX() });
+      ticks += eventTicks(event);
     });
+    if (i === exercise.measures.length - 1) anchors.push({ ticks, x: stave.getX() + stave.getWidth() });
   });
 
   const svg = container.querySelector('svg') as SVGSVGElement;
@@ -90,6 +100,7 @@ export function renderExercise(container: HTMLDivElement, exercise: Exercise, op
   return {
     svg,
     notes: noteEls,
+    anchors,
     mark(index, judgement) {
       const el = noteEls[index];
       if (!el) return;

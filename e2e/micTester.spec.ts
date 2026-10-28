@@ -17,6 +17,7 @@ test('detecta las palmas durante el turno del alumno y da un resumen', async ({ 
   await page.goto('/#/micro');
   await page.getByRole('button', { name: 'Activar micrófono' }).click();
   await expect(page.getByText('Listo. Da una palmada para probar.')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Activar micrófono' })).toBeHidden();
   await expectNoSeriousA11yViolations(page);
 
   await page.getByLabel(/Tempo/).fill('120');

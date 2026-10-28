@@ -57,6 +57,17 @@ describe('renderExercise', () => {
     expect(narrow).toBe('0 0 300 440'); // 1 compás por fila
   });
 
+  it('gives one scroll anchor per note or rest, plus the end, in order', () => {
+    const exercise = SAMPLES[0]?.exercise as Exercise;
+    const { anchors } = draw(exercise, 1000).rendered;
+    expect(anchors).toHaveLength(exercise.measures.flat().length + 1);
+    expect(anchors.at(-1)?.ticks).toBe(4 * 4 * 48);
+    anchors.slice(1).forEach((a, i) => {
+      expect(a.ticks).toBeGreaterThan((anchors[i] as { ticks: number }).ticks);
+      expect(a.x).toBeGreaterThan((anchors[i] as { x: number }).x);
+    });
+  });
+
   it('replaces the previous drawing when drawn again', () => {
     const exercise = SAMPLES[0]?.exercise as Exercise;
     const { container } = draw(exercise);

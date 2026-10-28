@@ -169,12 +169,12 @@ Debe permitir colorear una figura concreta (feedback).
 feedback en vivo por figura y pantalla de resumen. Usa un nivel fijo de negras en 4/4.
 
 **Acceptance criteria:**
-- [ ] Se puede jugar de principio a fin y el resumen muestra %, desglose y estrellas
-- [ ] El desplazamiento está sincronizado con el reloj de audio (sin deriva en 16 compases)
-- [ ] Se puede abandonar a mitad y volver al menú sin que quede el micro abierto
+- [x] Se puede jugar de principio a fin y el resumen muestra %, desglose y estrellas
+- [x] El desplazamiento está sincronizado con el reloj de audio (sin deriva en 16 compases)
+- [x] Se puede abandonar a mitad y volver al menú sin que quede el micro abierto
 
 **Verification:**
-- [ ] Tests pass: `npm test` (tests del controlador de partida con reloj y golpes simulados)
+- [x] Tests pass: `npm test` (tests del controlador de partida con reloj y golpes simulados)
 - [ ] Manual check: jugar el nivel en PC y móvil
 
 **Dependencies:** T4, T5, T6
