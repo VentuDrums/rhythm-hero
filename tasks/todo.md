@@ -13,14 +13,14 @@ Cada tarea (a partir de T1b) termina con `npm run check` en verde (ver `CONSTRAI
 que ya lee los textos de `i18n/es.json` y `i18n/en.json`.
 
 **Acceptance criteria:**
-- [ ] `npm run dev` muestra la portada de Rhythm Hero y el botón de idioma cambia el texto sin recargar
-- [ ] `npm test`, `npm run lint` y `npm run build` funcionan (con al menos un test de i18n)
-- [ ] Repositorio git con `.gitignore` (node_modules, dist)
+- [x] `npm run dev` muestra la portada de Rhythm Hero y el botón de idioma cambia el texto sin recargar
+- [x] `npm test`, `npm run lint` y `npm run build` funcionan (con al menos un test de i18n)
+- [x] Repositorio git con `.gitignore` (node_modules, dist)
 
 **Verification:**
-- [ ] Tests pass: `npm test`
-- [ ] Build succeeds: `npm run build`
-- [ ] Manual check: abrir `http://localhost:5173` y cambiar de idioma
+- [x] Tests pass: `npm test`
+- [x] Build succeeds: `npm run build`
+- [x] Manual check: abrir `http://localhost:5173` y cambiar de idioma
 
 **Dependencies:** None
 
@@ -35,12 +35,12 @@ secretlint, umbrales de cobertura en `vitest.config.ts`, Playwright con un E2E d
 Lighthouse contra `vite preview` y `npm audit`. Un único `npm run check` lo ejecuta todo y muestra cuánto tarda.
 
 **Acceptance criteria:**
-- [ ] `npm run check` pasa en verde con el proyecto de T1 y muestra el tiempo total
-- [ ] Cada fila de la tabla de `CONSTRAINTS.md` tiene su comando funcionando
-- [ ] Prueba de fuego: un `@ts-ignore` o un `.skip` introducido a propósito hace fallar `floor-guard` (luego se retira)
+- [x] `npm run check` pasa en verde con el proyecto de T1 y muestra el tiempo total
+- [x] Cada fila de la tabla de `CONSTRAINTS.md` tiene su comando funcionando
+- [x] Prueba de fuego: un `@ts-ignore` o un `.skip` introducido a propósito hace fallar `floor-guard` (luego se retira)
 
 **Verification:**
-- [ ] `npm run check`
+- [x] `npm run check`
 
 **Dependencies:** T1
 

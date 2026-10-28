@@ -21,18 +21,21 @@ export function t(key: MessageKey): string {
   return messages[current][key];
 }
 
-function isMessageKey(key: string): key is MessageKey {
-  return key in messages.es;
+export function isMessageKey(key: string | null): key is MessageKey {
+  return key !== null && Object.hasOwn(messages.es, key);
 }
+
+const bindings: [attr: string, apply: (el: Element, text: string) => void][] = [
+  ['data-i18n', (el, text) => (el.textContent = text)],
+  ['data-i18n-label', (el, text) => el.setAttribute('aria-label', text)],
+];
 
 /** Rellena los elementos marcados con data-i18n (texto) y data-i18n-label (aria-label). */
 export function applyTranslations(root: ParentNode): void {
-  for (const el of root.querySelectorAll<HTMLElement>('[data-i18n]')) {
-    const key = el.dataset.i18n ?? '';
-    if (isMessageKey(key)) el.textContent = t(key);
-  }
-  for (const el of root.querySelectorAll<HTMLElement>('[data-i18n-label]')) {
-    const key = el.dataset.i18nLabel ?? '';
-    if (isMessageKey(key)) el.setAttribute('aria-label', t(key));
+  for (const [attr, apply] of bindings) {
+    for (const el of root.querySelectorAll(`[${attr}]`)) {
+      const key = el.getAttribute(attr);
+      if (isMessageKey(key)) apply(el, t(key));
+    }
   }
 }

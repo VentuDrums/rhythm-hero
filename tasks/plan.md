@@ -56,8 +56,8 @@ Andamiaje (Vite, TS, Vitest, ESLint, i18n mínimo)
 Las tareas con todo el detalle están en [todo.md](todo.md).
 
 ### Fase 1: Base y riesgo técnico
-- [ ] T1: Andamiaje del proyecto
-- [ ] T1b: Comprobaciones de calidad (`npm run check`)
+- [x] T1: Andamiaje del proyecto
+- [x] T1b: Comprobaciones de calidad (`npm run check`)
 - [ ] T2: Modelo rítmico
 - [ ] T3: Detector de golpes (función pura)
 - [ ] T4: Probador de micro en vivo con metrónomo y woodblock
