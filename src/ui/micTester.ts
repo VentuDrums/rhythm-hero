@@ -1,7 +1,7 @@
 // Probador de micrófono: comprueba en un dispositivo real que se detectan las palmas,
 // aplicando la regla de turnos (1 compás de claves y después silencio con pulso visual).
 import { connectDetector, type DetectorConnection } from '../audio/detectorNode';
-import { acceptOnsets, planTurn, type TurnPlan } from '../audio/listenWindow';
+import { acceptOnsets, isShownOnset, planTurn, type TurnPlan } from '../audio/listenWindow';
 import { MicAccessError, openMic } from '../audio/mic';
 import { pulseOffsets } from '../audio/pulseStats';
 import { playClave } from '../audio/synth';
@@ -69,6 +69,7 @@ export function mountMicTester(root: HTMLElement): () => void {
   tempo.addEventListener('input', showTempo);
 
   function onOnset(time: number): void {
+    if (!isShownOnset(time, plan)) return;
     flash.classList.add('on');
     window.clearTimeout(flashTimer);
     flashTimer = window.setTimeout(() => flash.classList.remove('on'), FLASH_MS);

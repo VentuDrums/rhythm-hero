@@ -95,7 +95,8 @@ Incluye el sintetizador de claves y woodblock y `listenWindow`, que calcula cuá
 
 **Acceptance criteria:**
 - [ ] En PC y móvil aparecen los golpes en tiempo real al dar palmas o golpear la mesa durante el turno del alumno
-- [ ] Ninguna clave ni woodblock de la app aparece como golpe, ni siquiera con el volumen alto (test con `listenWindow` y prueba manual)
+- [x] Ninguna clave ni woodblock de la app aparece como golpe, ni siquiera con el volumen alto (test con `listenWindow` y prueba manual)
+  - 2026-10-28: el contador ya las ignoraba; el cuadrado verde se encendía con las claves y ahora tampoco
 - [x] Si se deniega el micro aparece un mensaje claro (ES/EN)
 
 **Verification:**

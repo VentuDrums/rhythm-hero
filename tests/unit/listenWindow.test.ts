@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { acceptOnsets, EARLY_S, MASK_AFTER_SOUND_S, planTurn } from '../../src/audio/listenWindow';
+import { acceptOnsets, EARLY_S, isShownOnset, MASK_AFTER_SOUND_S, planTurn } from '../../src/audio/listenWindow';
 
 describe('planTurn', () => {
   it('plays one measure of claves, then listens silently during the student measures', () => {
@@ -34,5 +34,28 @@ describe('acceptOnsets', () => {
 
   it('opens early enough to accept a clap up to 100 ms ahead of the first beat', () => {
     expect(EARLY_S).toBeGreaterThanOrEqual(0.1);
+  });
+});
+
+describe('isShownOnset', () => {
+  // Claves en 10, 10.5, 11 y 11.5; turno del alumno de 12 a 16.
+  const plan = planTurn({ timeSignature: { beats: 4, beatUnit: 4 }, bpm: 120, startTime: 10, studentMeasures: 2 });
+
+  it('shows every clap when no turn is running, so the mic can be tested freely', () => {
+    expect(isShownOnset(3, null)).toBe(true);
+  });
+
+  it('shows claps before and after the turn', () => {
+    expect(isShownOnset(9, plan)).toBe(true);
+    expect(isShownOnset(16.5, plan)).toBe(true);
+  });
+
+  it('hides what the mic hears during the claves, even with the speaker loud', () => {
+    expect(plan.countIn.map((t) => isShownOnset(t + 0.01, plan))).toEqual([false, false, false, false]);
+  });
+
+  it('shows the claps of the student turn', () => {
+    expect(isShownOnset(12, plan)).toBe(true);
+    expect(isShownOnset(15.9, plan)).toBe(true);
   });
 });

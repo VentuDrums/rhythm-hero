@@ -46,3 +46,12 @@ export function acceptOnsets(onsets: number[], windows: ListenWindow[], appSound
       !appSounds.some((s) => t >= s && t - s < MASK_AFTER_SOUND_S),
   );
 }
+
+/**
+ * ¿Debe la pantalla mostrar este golpe? Fuera de un turno se muestra todo (para probar el micro);
+ * durante un turno, solo lo que cuenta, así las claves de la app no encienden el aviso.
+ */
+export function isShownOnset(time: number, plan: TurnPlan | null): boolean {
+  if (!plan || time < (plan.countIn[0] as number) - EARLY_S || time > plan.end) return true;
+  return acceptOnsets([time], [plan.listen], plan.countIn).length > 0;
+}
