@@ -54,12 +54,12 @@ Lighthouse contra `vite preview` y `npm audit`. Un único `npm run check` lo eje
 conversión de un ejercicio a instantes de golpe (`hitTimes`) y validación de que cada compás suma lo que debe.
 
 **Acceptance criteria:**
-- [ ] `hitTimes` da los instantes correctos para negras, corcheas, puntillo y silencios en todos los compases
-- [ ] La validación detecta compases incompletos o que se pasan
-- [ ] El pulso de 6/8 está definido (negra con puntillo) y testeado
+- [x] `hitTimes` da los instantes correctos para negras, corcheas, puntillo y silencios en todos los compases
+- [x] La validación detecta compases incompletos o que se pasan
+- [x] El pulso de 6/8 está definido (negra con puntillo) y testeado
 
 **Verification:**
-- [ ] Tests pass: `npm test -- rhythm`
+- [x] Tests pass: `npm test -- rhythm`
 
 **Dependencies:** T1b
 
