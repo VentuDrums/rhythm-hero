@@ -1,5 +1,26 @@
 {
   "app.title": "Rhythm Hero",
   "home.tagline": "Aprende ritmo tocando con palmas o golpeando la mesa",
-  "lang.switch": "English"
+  "home.micTest": "Probar micrófono",
+  "lang.switch": "English",
+  "nav.back": "Volver",
+  "mic.title": "Probador de micrófono",
+  "mic.intro": "Da palmas o golpea la mesa. Primero suena un compás de claves; después la app se calla y tú sigues el pulso que ves en pantalla.",
+  "mic.privacy": "El sonido se analiza solo en este dispositivo: no se graba ni se envía.",
+  "mic.enable": "Activar micrófono",
+  "mic.level": "Nivel del micrófono",
+  "mic.tempo": "Tempo: {bpm} BPM",
+  "mic.start": "Empezar",
+  "mic.status.ready": "Listo. Da una palmada para probar.",
+  "mic.status.listen": "Escucha las claves…",
+  "mic.status.play": "¡Tu turno! Sigue el pulso.",
+  "mic.status.done": "Terminado.",
+  "mic.detected": "Golpes detectados: {count}",
+  "mic.offset.early": "De media vas {ms} ms adelantado.",
+  "mic.offset.late": "De media vas {ms} ms atrasado.",
+  "mic.offset.none": "No se ha detectado ningún golpe a tiempo.",
+  "mic.timeline": "Pulsos (rayas) y golpes detectados (puntos)",
+  "mic.error.denied": "No hay permiso para usar el micrófono. Actívalo en los ajustes del navegador y vuelve a intentarlo.",
+  "mic.error.unavailable": "No se encuentra ningún micrófono o lo está usando otra aplicación.",
+  "mic.error.unsupported": "Este navegador no permite usar el micrófono. Prueba con Chrome, Edge, Firefox o Safari actualizados."
 }

@@ -1,5 +1,26 @@
 {
   "app.title": "Rhythm Hero",
   "home.tagline": "Learn rhythm by clapping or tapping on the table",
-  "lang.switch": "Español"
+  "home.micTest": "Test microphone",
+  "lang.switch": "Español",
+  "nav.back": "Back",
+  "mic.title": "Microphone tester",
+  "mic.intro": "Clap or tap the table. First you hear one bar of claves; then the app goes quiet and you keep the pulse you see on screen.",
+  "mic.privacy": "Sound is analysed only on this device: it is never recorded or sent.",
+  "mic.enable": "Turn on microphone",
+  "mic.level": "Microphone level",
+  "mic.tempo": "Tempo: {bpm} BPM",
+  "mic.start": "Start",
+  "mic.status.ready": "Ready. Clap once to try it.",
+  "mic.status.listen": "Listen to the claves…",
+  "mic.status.play": "Your turn! Keep the pulse.",
+  "mic.status.done": "Finished.",
+  "mic.detected": "Claps detected: {count}",
+  "mic.offset.early": "On average you are {ms} ms early.",
+  "mic.offset.late": "On average you are {ms} ms late.",
+  "mic.offset.none": "No claps were detected in time.",
+  "mic.timeline": "Beats (lines) and detected claps (dots)",
+  "mic.error.denied": "There is no permission to use the microphone. Allow it in your browser settings and try again.",
+  "mic.error.unavailable": "No microphone was found, or another app is using it.",
+  "mic.error.unsupported": "This browser cannot use the microphone. Try an up-to-date Chrome, Edge, Firefox or Safari."
 }

@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import en from '../../src/i18n/en.json';
 import es from '../../src/i18n/es.json';
-import { applyTranslations, getLang, isMessageKey, setLang, t } from '../../src/i18n';
+import { applyTranslations, getLang, isMessageKey, setLang, setText, t } from '../../src/i18n';
 
 describe('i18n', () => {
   beforeEach(() => setLang('es'));
@@ -29,6 +29,23 @@ describe('i18n', () => {
     document.body.innerHTML = '<button data-i18n-label="home.tagline"></button>';
     applyTranslations(document.body);
     expect(document.querySelector('button')?.getAttribute('aria-label')).toBe(es['home.tagline']);
+  });
+
+  it('fills {placeholders} and keeps unknown ones visible', () => {
+    expect(t('mic.detected', { count: 7 })).toBe('Golpes detectados: 7');
+    expect(t('mic.detected')).toBe('Golpes detectados: {count}');
+  });
+
+  it('setText keeps parameters so a language switch re-renders them', () => {
+    document.body.innerHTML = '<p></p>';
+    const p = document.querySelector('p') as HTMLParagraphElement;
+    setText(p, 'mic.detected', { count: 3 });
+    expect(p.textContent).toBe('Golpes detectados: 3');
+    setLang('en');
+    applyTranslations(document.body);
+    expect(p.textContent).toBe('Claps detected: 3');
+    setText(p, 'home.tagline');
+    expect(p.hasAttribute('data-i18n-params')).toBe(false);
   });
 
   it('recognises only real message keys', () => {

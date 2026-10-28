@@ -60,7 +60,7 @@ Las tareas con todo el detalle están en [todo.md](todo.md).
 - [x] T1b: Comprobaciones de calidad (`npm run check`)
 - [x] T2: Modelo rítmico
 - [x] T3: Detector de golpes (función pura)
-- [ ] T4: Probador de micro en vivo con metrónomo y woodblock
+- [x] T4: Probador de micro en vivo con metrónomo y woodblock
 
 ### Checkpoint 1: la detección funciona de verdad
 - [ ] Tests y build en verde

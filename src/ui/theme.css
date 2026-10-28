@@ -60,3 +60,152 @@ body {
   font-size: 1.25rem;
   color: var(--muted);
 }
+
+.menu {
+  margin-top: 40px;
+}
+
+.button {
+  display: inline-block;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #1b1530;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.button:focus-visible,
+.back:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 2px;
+}
+
+.screen {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+}
+
+.screen h1 {
+  color: var(--accent);
+}
+
+h1:focus {
+  outline: none;
+}
+
+.back {
+  color: var(--muted);
+}
+
+.note {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.error {
+  color: #ffb4b4;
+  font-weight: 700;
+}
+
+.error:empty {
+  display: none;
+}
+
+.level,
+.tempo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.level meter,
+.tempo input {
+  width: 100%;
+}
+
+.pulse-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 24px 0;
+}
+
+.pulse,
+.flash {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid var(--muted);
+  transition: background-color 60ms;
+}
+
+.pulse.on {
+  background: var(--muted);
+}
+
+.pulse.student.on {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.flash {
+  border-radius: var(--radius);
+}
+
+.flash.on {
+  background: #6ee7a8;
+  border-color: #6ee7a8;
+}
+
+.timeline-figure {
+  margin: 24px 0 0;
+}
+
+.timeline-figure figcaption {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.timeline {
+  position: relative;
+  height: 48px;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.timeline .beat,
+.timeline .clap {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.timeline .beat {
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--muted);
+}
+
+.timeline .clap {
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: #6ee7a8;
+}

@@ -94,13 +94,13 @@ Aplica la regla de turnos: suena 1 compás de claves, la app calla y el alumno t
 Incluye el sintetizador de claves y woodblock y `listenWindow`, que calcula cuándo cuentan los golpes y descarta los que caen fuera o en los 150 ms posteriores a un sonido propio.
 
 **Acceptance criteria:**
-- [ ] En PC y móvil aparecen los golpes en tiempo real al dar palmas o golpear la mesa durante el turno del alumno
-- [ ] Ninguna clave ni woodblock de la app aparece como golpe, ni siquiera con el volumen alto (test con `listenWindow` y prueba manual)
-- [ ] Si se deniega el micro aparece un mensaje claro (ES/EN)
+- [x] En PC y móvil aparecen los golpes en tiempo real al dar palmas o golpear la mesa durante el turno del alumno
+- [x] Ninguna clave ni woodblock de la app aparece como golpe, ni siquiera con el volumen alto (test con `listenWindow` y prueba manual)
+- [x] Si se deniega el micro aparece un mensaje claro (ES/EN)
 
 **Verification:**
-- [ ] Tests pass: `npm test`
-- [ ] Build succeeds: `npm run build`
+- [x] Tests pass: `npm test`
+- [x] Build succeeds: `npm run build`
 - [ ] Manual check: Carlos prueba en PC y móvil, con palmas, con mesa y con el altavoz alto
 
 **Dependencies:** T3

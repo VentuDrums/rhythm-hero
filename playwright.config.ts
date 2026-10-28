@@ -1,9 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
+import { FAKE_MEDIA_ARGS } from './e2e/paths';
 
 const PORT = 4173;
 
 export default defineConfig({
   testDir: 'e2e',
+  globalSetup: './e2e/global-setup.ts',
   fullyParallel: true,
   forbidOnly: true,
   reporter: [['list']],
@@ -12,8 +14,8 @@ export default defineConfig({
     permissions: ['microphone'],
     launchOptions: {
       // Micrófono simulado: Chromium no pide permiso y usa un dispositivo falso.
-      // Los tests que necesiten palmas concretas añadirán --use-file-for-fake-audio-capture.
-      args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'],
+      // Los tests que necesiten palmas concretas añaden --use-file-for-fake-audio-capture.
+      args: FAKE_MEDIA_ARGS,
     },
   },
   projects: [

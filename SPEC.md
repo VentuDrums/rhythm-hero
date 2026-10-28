@@ -64,7 +64,8 @@ detecta cada golpe y el juego lo compara con el ritmo escrito en **notación mus
 - **Ventana de escucha** (evita que el micro oiga a la propia app): el micrófono se abre una sola vez al empezar la partida
   para no retrasar nada, pero los golpes solo cuentan dentro del turno del alumno.
   La ventana se abre poco antes de la primera figura (≥ 100 ms, para aceptar golpes adelantados) y se cierra tras la última.
-  Como refuerzo, se ignoran los *onsets* en los 150 ms siguientes a cualquier sonido de la app y se activa `echoCancellation`.
+  Como refuerzo, se ignoran los *onsets* en los 150 ms siguientes a cualquier sonido de la app.
+- El micro se pide **sin procesado del navegador** (`echoCancellation`, `noiseSuppression` y `autoGainControl` desactivados): ese procesado puede apagar o deformar las palmadas, y con la regla de turnos la cancelación de eco no hace falta.
 - El detector es una **función pura** (muestras → lista de tiempos) para poder probarla con grabaciones reales de palmas y mesa.
 
 ## Tech Stack
