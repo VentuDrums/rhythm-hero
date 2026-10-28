@@ -149,12 +149,12 @@ perfecto, bien (adelantado o atrasado) o fallo. Cuenta los golpes sobrantes, inc
 Debe permitir colorear una figura concreta (feedback).
 
 **Acceptance criteria:**
-- [ ] Cualquier ejercicio válido se dibuja con la notación correcta
-- [ ] Se puede marcar la figura n como perfecto, bien o fallo (color)
-- [ ] Legible en móvil vertical y horizontal
+- [x] Cualquier ejercicio válido se dibuja con la notación correcta
+- [x] Se puede marcar la figura n como perfecto, bien o fallo (color)
+- [x] Legible en móvil vertical y horizontal
 
 **Verification:**
-- [ ] Tests pass: `npm test -- notation` (genera el SVG en jsdom sin errores, número de figuras correcto)
+- [x] Tests pass: `npm test -- notation` (genera el SVG en jsdom sin errores, número de figuras correcto)
 - [ ] Manual check: página de muestra con todos los tipos de figura
 
 **Dependencies:** T2

@@ -22,5 +22,17 @@
   "mic.timeline": "Pulsos (rayas) y golpes detectados (puntos)",
   "mic.error.denied": "No hay permiso para usar el micrófono. Actívalo en los ajustes del navegador y vuelve a intentarlo.",
   "mic.error.unavailable": "No se encuentra ningún micrófono o lo está usando otra aplicación.",
-  "mic.error.unsupported": "Este navegador no permite usar el micrófono. Prueba con Chrome, Edge, Firefox o Safari actualizados."
+  "mic.error.unsupported": "Este navegador no permite usar el micrófono. Prueba con Chrome, Edge, Firefox o Safari actualizados.",
+  "home.notation": "Ver partitura de muestra",
+  "notation.title": "Partitura de muestra",
+  "notation.intro": "Todas las figuras y silencios que usa el juego. Abajo, cómo se colorea cada resultado.",
+  "notation.loading": "Cargando partitura…",
+  "notation.sample.basic": "4/4: redonda, blanca, negra y corcheas",
+  "notation.sample.rests": "4/4: silencios de redonda, blanca, negra y corchea",
+  "notation.sample.small": "2/4: semicorcheas y síncopa",
+  "notation.sample.dotted": "3/4: blanca y negra con puntillo",
+  "notation.sample.compound": "6/8: corcheas, negra con puntillo y silencios",
+  "notation.sample.feedback": "Colores de resultado",
+  "notation.legend": "Verde: perfecto · Naranja: adelantado o atrasado · Rojo: fallo",
+  "notation.figure": "Partitura: {name}"
 }

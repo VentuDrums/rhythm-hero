@@ -22,5 +22,17 @@
   "mic.timeline": "Beats (lines) and detected claps (dots)",
   "mic.error.denied": "There is no permission to use the microphone. Allow it in your browser settings and try again.",
   "mic.error.unavailable": "No microphone was found, or another app is using it.",
-  "mic.error.unsupported": "This browser cannot use the microphone. Try an up-to-date Chrome, Edge, Firefox or Safari."
+  "mic.error.unsupported": "This browser cannot use the microphone. Try an up-to-date Chrome, Edge, Firefox or Safari.",
+  "home.notation": "See sample notation",
+  "notation.title": "Sample notation",
+  "notation.intro": "Every note and rest the game uses. Below, how each result is coloured.",
+  "notation.loading": "Loading notation…",
+  "notation.sample.basic": "4/4: whole, half, quarter and eighth notes",
+  "notation.sample.rests": "4/4: whole, half, quarter and eighth rests",
+  "notation.sample.small": "2/4: sixteenth notes and syncopation",
+  "notation.sample.dotted": "3/4: dotted half and dotted quarter notes",
+  "notation.sample.compound": "6/8: eighth notes, dotted quarter and rests",
+  "notation.sample.feedback": "Result colours",
+  "notation.legend": "Green: perfect · Orange: early or late · Red: miss",
+  "notation.figure": "Notation: {name}"
 }

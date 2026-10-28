@@ -75,7 +75,7 @@ detecta cada golpe y el juego lo compara con el ritmo escrito en **notación mus
 | Lenguaje | TypeScript (estricto) | Tipos para el modelo rítmico y los tiempos |
 | Build/dev | Vite | Sencillo, genera una web estática |
 | UI | TypeScript sin framework, con DOM y SVG/Canvas | Juego pequeño. Se evita una dependencia pesada |
-| Notación | VexFlow 4.x | Dibuja figuras, silencios, barrados y compases correctamente |
+| Notación | VexFlow 5 (fuente Gonville, 22 kB) | Dibuja figuras, silencios, barrados y compases correctamente |
 | Audio | Web Audio API + AudioWorklet | Baja latencia y reloj preciso |
 | Tests | Vitest (unitarios), Playwright (e2e) | Playwright simula el micro con un WAV de palmas |
 | Persistencia | `localStorage` | Sin servidor ni cuentas, así que no hay datos personales de menores |

@@ -1,10 +1,12 @@
 import { applyTranslations, getLang, setLang } from './i18n';
 import { mountHome } from './ui/home';
 import { mountMicTester } from './ui/micTester';
+import { mountNotationPreview } from './ui/notationPreview';
 import './ui/theme.css';
 
 const routes: Record<string, (root: HTMLElement) => () => void> = {
   '#/micro': mountMicTester,
+  '#/partitura': mountNotationPreview,
 };
 
 const app = document.querySelector<HTMLElement>('#app') as HTMLElement;
