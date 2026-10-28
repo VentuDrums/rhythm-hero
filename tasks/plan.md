@@ -68,7 +68,7 @@ Las tareas con todo el detalle están en [todo.md](todo.md).
 - [ ] Revisión antes de seguir
 
 ### Fase 2: Primer modo jugable (leer y tocar)
-- [ ] T5: Puntuación
+- [x] T5: Puntuación
 - [ ] T6: Notación con VexFlow
 - [ ] T7: Leer y tocar jugable con un nivel fijo
 - [ ] T8: Calibración de latencia

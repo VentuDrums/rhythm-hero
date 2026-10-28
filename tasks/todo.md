@@ -128,18 +128,20 @@ Incluye el sintetizador de claves y woodblock y `listenWindow`, que calcula cuá
 perfecto, bien (adelantado o atrasado) o fallo. Cuenta los golpes sobrantes, incluidos los que caen en silencios, y calcula el %, las estrellas y si el nivel está superado.
 
 **Acceptance criteria:**
-- [ ] Cada figura recibe exactamente una clasificación. Un golpe no puede valer para dos figuras
-- [ ] Los golpes sobrantes y los que caen en silencio restan según la regla del SPEC
-- [ ] Las ventanas (50/100 ms) y el umbral de superación (70 %) son configurables
+- [x] Cada figura recibe exactamente una clasificación. Un golpe no puede valer para dos figuras
+- [x] Los golpes sobrantes y los que caen en silencio restan según la regla del SPEC
+- [x] Las ventanas (50/100 ms) y el umbral de superación (70 %) son configurables
 
 **Verification:**
-- [ ] Tests pass: `npm test -- scoring`
+- [x] Tests pass: `npm test -- scoring`
 
 **Dependencies:** T2
 
 **Files likely touched:** `src/scoring/score.ts`, `tests/unit/score.test.ts`
 
 **Estimated scope:** S
+
+**Decisión:** estrellas con 70 % (1), 85 % (2) y 95 % (3). Un golpe sobrante resta medio punto, lo mismo que vale un "bien".
 
 ### Task 6: Notación con VexFlow
 
