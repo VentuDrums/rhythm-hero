@@ -192,3 +192,5 @@ export function hitTimes(events: RhythmEvent[], bpm: number, startTime: number):
    Hasta entonces el detector se prueba con palmas sintéticas generadas en los tests y con clips de dominio público.
    El criterio de éxito 2 se valida definitivamente cuando lleguen las grabaciones reales.
 2. Si más adelante quieres que el profesor vea los resultados de sus alumnos, hará falta servidor y cuentas (RGPD). Queda **fuera de esta versión**.
+3. **Hardware propio** (idea en el aire, futuro): un dispositivo físico para tocar los ritmos conectado a la app.
+   No afecta a esta versión. Si llega, el detector debería aceptar golpes de otra fuente además del micrófono.

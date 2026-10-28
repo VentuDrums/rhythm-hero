@@ -102,6 +102,8 @@ Incluye el sintetizador de claves y woodblock y `listenWindow`, que calcula cuá
 - [x] Tests pass: `npm test`
 - [x] Build succeeds: `npm run build`
 - [ ] Manual check: Carlos prueba en PC y móvil, con palmas, con mesa y con el altavoz alto
+  - Resultado (2026-10-28): palmas bien en PC y móvil. Mesa en móvil/tablet: medio bien, a veces falla.
+    Mesa con Shure SM58 en el PC: detección errática (probables vibraciones del soporte). Falta probar el altavoz alto.
 
 **Dependencies:** T3
 
@@ -113,6 +115,7 @@ Incluye el sintetizador de claves y woodblock y `listenWindow`, que calcula cuá
 - [ ] Todos los tests en verde y build limpio
 - [ ] Prueba manual de Carlos en PC y móvil superada
 - [ ] Ajuste de umbrales si hace falta, y revisión antes de seguir
+  - Golpes en mesa: se mejorarán en T8 (calibración por dispositivo) y con grabaciones reales (SPEC, pregunta abierta 1).
 
 ---
 
