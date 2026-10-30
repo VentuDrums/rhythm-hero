@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import en from '../../src/i18n/en.json';
 import es from '../../src/i18n/es.json';
-import { applyTranslations, getLang, isMessageKey, setLang, setText, t } from '../../src/i18n';
+import { applyTranslations, chooseLang, getLang, initialLang, isMessageKey, setLang, setText, t } from '../../src/i18n';
 
 describe('i18n', () => {
   beforeEach(() => setLang('es'));
@@ -66,5 +66,45 @@ describe('i18n', () => {
     expect(p2?.textContent).toBe('empty');
     expect(b1?.getAttribute('aria-label')).toBe('orig');
     expect(b2?.getAttribute('aria-label')).toBe('empty');
+  });
+});
+
+describe('language choice', () => {
+  beforeEach(() => localStorage.clear());
+  afterEach(() => {
+    vi.restoreAllMocks();
+    setLang('es');
+  });
+
+  it('remembers the chosen language on this device', () => {
+    chooseLang('en');
+    expect(getLang()).toBe('en');
+    expect(initialLang('es-ES')).toBe('en');
+    chooseLang('es');
+    expect(initialLang('en-GB')).toBe('es');
+  });
+
+  it('follows the browser the first time: English for en-*, Spanish otherwise', () => {
+    expect(initialLang('en-GB')).toBe('en');
+    expect(initialLang('EN')).toBe('en');
+    expect(initialLang('es-ES')).toBe('es');
+    expect(initialLang('ca')).toBe('es');
+  });
+
+  it('ignores a corrupted saved value', () => {
+    localStorage.setItem('rhythm-hero.lang', 'fr');
+    expect(initialLang('es-ES')).toBe('es');
+  });
+
+  it('still works when the browser blocks storage', () => {
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    chooseLang('en');
+    expect(getLang()).toBe('en');
+    expect(initialLang('es-ES')).toBe('es');
   });
 });

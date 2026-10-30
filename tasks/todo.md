@@ -218,12 +218,12 @@ y guardado por dispositivo. Leer y tocar la descuenta. Se puede repetir desde aj
 y una pantalla para elegir nivel. Los niveles bloqueados se ven pero no se pueden abrir.
 
 **Acceptance criteria:**
-- [ ] Todos los niveles pasan la validación del modelo rítmico (test)
-- [ ] Todos se dibujan sin errores
-- [ ] El selector abre el nivel elegido en leer y tocar
+- [x] Todos los niveles pasan la validación del modelo rítmico (test)
+- [x] Todos se dibujan sin errores
+- [x] El selector abre el nivel elegido en leer y tocar
 
 **Verification:**
-- [ ] Tests pass: `npm test -- levels`
+- [x] Tests pass: `npm test -- levels`
 - [ ] Manual check: recorrer los niveles
 
 **Dependencies:** T7
@@ -238,12 +238,12 @@ y una pantalla para elegir nivel. Los niveles bloqueados se ven pero no se puede
 El almacenamiento debe tolerar que `localStorage` falle o tenga datos corruptos.
 
 **Acceptance criteria:**
-- [ ] El progreso se conserva al cerrar y abrir el navegador
-- [ ] Superar un nivel desbloquea el siguiente
-- [ ] Si `localStorage` falla o tiene datos corruptos, el juego arranca igualmente
+- [x] El progreso se conserva al cerrar y abrir el navegador
+- [x] Superar un nivel desbloquea el siguiente
+- [x] Si `localStorage` falla o tiene datos corruptos, el juego arranca igualmente
 
 **Verification:**
-- [ ] Tests pass: `npm test -- storage`
+- [x] Tests pass: `npm test -- storage`
 
 **Dependencies:** T9
 
@@ -257,12 +257,12 @@ El almacenamiento debe tolerar que `localStorage` falle o tenga datos corruptos.
 y añadir un test que falle si falta alguna clave en un idioma.
 
 **Acceptance criteria:**
-- [ ] No queda ningún texto visible escrito directamente en el código
-- [ ] `es.json` y `en.json` tienen exactamente las mismas claves (test)
-- [ ] El idioma elegido se recuerda
+- [x] No queda ningún texto visible escrito directamente en el código
+- [x] `es.json` y `en.json` tienen exactamente las mismas claves (test)
+- [x] El idioma elegido se recuerda
 
 **Verification:**
-- [ ] Tests pass: `npm test -- i18n`
+- [x] Tests pass: `npm test -- i18n`
 - [ ] Manual check: recorrer todas las pantallas en inglés
 
 **Dependencies:** T10

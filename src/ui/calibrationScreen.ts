@@ -22,7 +22,7 @@ export function mountCalibration(root: HTMLElement): () => void {
     <p id="status" aria-live="polite"></p>
     <div class="actions">
       <button type="button" class="button" id="start" data-i18n="cal.start"></button>
-      <a class="button secondary" href="#/leer" data-i18n="cal.toPlay"></a>
+      <a class="button secondary" href="#/niveles" data-i18n="cal.toPlay"></a>
     </div>`;
   applyTranslations(root);
 

@@ -33,6 +33,8 @@ test('muestra el retraso guardado y Leer y tocar deja de pedir calibrar', async 
   await page.reload();
   await expect(page.getByText('Retraso guardado en este dispositivo: 85 ms.')).toBeVisible();
   await page.getByRole('link', { name: 'Ir a Leer y tocar' }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Niveles');
+  await page.getByRole('link', { name: /Nivel 1:/ }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Leer y tocar');
   await expect(page.getByText('Calibrarlo hace que la puntuación sea más justa.', { exact: false })).toBeHidden();
 });

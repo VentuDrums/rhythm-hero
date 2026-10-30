@@ -1,0 +1,14 @@
+[
+  { "id": 1, "time": "4/4", "bpm": 80, "rhythm": "q q q q | q q q q | q q q q | q q q q" },
+  { "id": 2, "time": "4/4", "bpm": 80, "rhythm": "h h | q q h | h q q | q q q q" },
+  { "id": 3, "time": "4/4", "bpm": 80, "rhythm": "w | h h | q q h | w" },
+  { "id": 4, "time": "4/4", "bpm": 80, "rhythm": "q q q qr | q qr q qr | qr q q q | h q qr" },
+  { "id": 5, "time": "4/4", "bpm": 80, "rhythm": "h hr | q q hr | wr | h q q" },
+  { "id": 6, "time": "2/4", "bpm": 80, "rhythm": "q q | h | q qr | h | q q | qr q | h | hr" },
+  { "id": 7, "time": "3/4", "bpm": 80, "rhythm": "q q q | h q | q h | h qr" },
+  { "id": 8, "time": "4/4", "bpm": 70, "rhythm": "8 8 q 8 8 q | q q 8 8 q | 8 8 8 8 h | 8 8 q q q" },
+  { "id": 9, "time": "2/4", "bpm": 70, "rhythm": "8 8 q | q 8 8 | 8 8 8 8 | q qr | 8 8 8 8 | q 8 8 | 8 8 q | h" },
+  { "id": 10, "time": "4/4", "bpm": 70, "rhythm": "q 8r 8 q q | 8r 8 q 8r 8 q | q q 8 8 8r 8 | h q qr" },
+  { "id": 11, "time": "3/4", "bpm": 70, "rhythm": "8 8 8 8 q | q 8 8 q | 8r 8 q q | h qr" },
+  { "id": 12, "time": "4/4", "bpm": 80, "rhythm": "q 8 8 h | 8 8 qr q q | 8 8 8 8 q qr | w" }
+]

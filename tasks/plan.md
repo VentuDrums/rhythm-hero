@@ -78,9 +78,9 @@ Las tareas con todo el detalle están en [todo.md](todo.md).
 - [ ] Funciona en PC y móvil
 
 ### Fase 3: Contenido y progreso
-- [ ] T9: Niveles base y selector de niveles
-- [ ] T10: Progreso, récords y estrellas
-- [ ] T11: Interfaz bilingüe completa
+- [x] T9: Niveles base y selector de niveles
+- [x] T10: Progreso, récords y estrellas
+- [x] T11: Interfaz bilingüe completa
 
 ### Fase 4: Eco y dictado
 - [ ] T12: Eco compás a compás

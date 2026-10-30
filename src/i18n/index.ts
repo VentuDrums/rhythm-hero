@@ -13,9 +13,34 @@ export function getLang(): Lang {
   return current;
 }
 
+const LANG_KEY = 'rhythm-hero.lang';
+
 export function setLang(lang: Lang): void {
   current = lang;
   document.documentElement.lang = lang;
+}
+
+/** Cambia de idioma y lo recuerda en este dispositivo (si el navegador deja guardar). */
+export function chooseLang(lang: Lang): void {
+  setLang(lang);
+  try {
+    localStorage.setItem(LANG_KEY, lang);
+  } catch {
+    // Sin almacenamiento: el idioma vale hasta cerrar la página.
+    return;
+  }
+}
+
+/** Idioma al abrir: el elegido antes; si no, el del navegador (inglés si empieza por "en"); si no, español. */
+export function initialLang(browserLang = navigator.language): Lang {
+  let saved: string | null = null;
+  try {
+    saved = localStorage.getItem(LANG_KEY);
+  } catch {
+    saved = null;
+  }
+  if (saved === 'es' || saved === 'en') return saved;
+  return browserLang.toLowerCase().startsWith('en') ? 'en' : 'es';
 }
 
 /** Traduce una clave; los huecos {nombre} se rellenan con params. */

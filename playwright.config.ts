@@ -19,8 +19,9 @@ export default defineConfig({
     },
   },
   projects: [
-    { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
-    { name: 'mobile', use: { ...devices['Pixel 7'] } },
+    // Navegador en español: el juego elige idioma según el navegador la primera vez.
+    { name: 'desktop', use: { ...devices['Desktop Chrome'], locale: 'es-ES' } },
+    { name: 'mobile', use: { ...devices['Pixel 7'], locale: 'es-ES' } },
   ],
   webServer: {
     command: `npx vite preview --port ${PORT} --strictPort`,

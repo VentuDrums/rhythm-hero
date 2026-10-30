@@ -29,7 +29,10 @@ test('se juega un nivel de principio a fin y sale el resumen', async ({ page }) 
   test.setTimeout(60_000);
   await page.goto('/');
   await page.getByRole('link', { name: 'Leer y tocar' }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Niveles');
+  await page.getByRole('link', { name: /Nivel 1:/ }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Leer y tocar');
+  await expect(page.getByText('Negras', { exact: true })).toBeVisible();
   await expect(page.locator('#track svg')).toBeVisible();
   await expectNoSeriousA11yViolations(page);
 
@@ -57,8 +60,10 @@ test('se juega un nivel de principio a fin y sale el resumen', async ({ page }) 
   await expect(page.locator('#sum-score .vf-stavenote:is(.perfect, .early, .late, .miss)')).toHaveCount(16);
   await expectNoSeriousA11yViolations(page);
 
-  await page.getByRole('link', { name: 'Volver al menú' }).click();
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Rhythm Hero');
+  // El intento queda guardado en el selector de niveles.
+  await page.getByRole('link', { name: 'Elegir nivel' }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Niveles');
+  await expect(page.getByRole('link', { name: /Nivel 1:/ })).toContainText(/Récord: \d+ %/);
   expect(await liveTracks(page)).toBe(0);
 });
 
@@ -75,7 +80,7 @@ test('se puede parar a mitad y salir sin que quede el micrófono abierto', async
   await page.getByRole('button', { name: 'Empezar' }).click();
   await expect(page.getByText('Escucha las claves…')).toBeVisible();
   await page.getByRole('link', { name: 'Volver' }).first().click();
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Rhythm Hero');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Niveles');
   expect(await liveTracks(page)).toBe(0);
 });
 
@@ -83,5 +88,6 @@ test('el modo también está en inglés', async ({ page }) => {
   await page.goto('/#/leer');
   await page.getByRole('button', { name: 'English' }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Read and play');
-  await expect(page.getByText('Level 1: quarter notes · 4/4 · 80 BPM')).toBeVisible();
+  await expect(page.getByText('Quarter notes', { exact: true })).toBeVisible();
+  await expect(page.getByText('Level 1:')).toBeVisible();
 });

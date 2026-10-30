@@ -344,3 +344,62 @@ h1:focus {
   color: var(--accent);
   margin: 0;
 }
+
+.level-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  gap: 12px;
+  margin: 24px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.level-card {
+  display: grid;
+  gap: 4px;
+  height: 100%;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+a.level-card:hover,
+a.level-card:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.level-card.locked {
+  opacity: 0.6;
+}
+
+.level-num {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.level-title {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.level-meta,
+.level-best,
+.level-lock {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.level-stars {
+  color: var(--accent);
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+}
+
+.level-line span + span {
+  font-weight: 700;
+  color: var(--text);
+}

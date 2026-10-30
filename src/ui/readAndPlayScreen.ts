@@ -6,28 +6,38 @@ import { applyTranslations, setText } from '../i18n';
 import { ReadAndPlayRun } from '../modes/readAndPlay';
 import type { RenderedExercise } from '../notation/render';
 import { xAtTicks } from '../notation/scroll';
+import { getLevel, LEVELS, nextLevel } from '../levels';
 import { beatTicks, measureTicks } from '../rhythm/duration';
+import { isUnlocked, loadProgress, recordResult } from '../storage/progress';
 import { getLatency } from '../storage/settings';
-import type { Exercise, RhythmEvent } from '../rhythm/types';
 import { DEFAULT_SCORE_OPTIONS, type Judgement, type RunScore } from '../scoring/score';
-
-const q: RhythmEvent = { duration: 'quarter' };
-/** Nivel fijo de esta primera versión (T7): negras en 4/4. Los niveles llegan en T9. */
-export const LEVEL_1: Exercise = { timeSignature: { beats: 4, beatUnit: 4 }, bpm: 80, measures: [[q, q, q, q], [q, q, q, q], [q, q, q, q], [q, q, q, q]] };
 
 const LEAD_IN_S = 0.4;
 const MEASURE_PX = 260;
 /** La línea de golpeo, a esta fracción del ancho del carril. */
 const HIT_LINE = 0.25;
 
-export function mountReadAndPlay(root: HTMLElement): () => void {
-  const exercise = LEVEL_1;
+export function mountReadAndPlay(root: HTMLElement, param?: string): () => void {
+  const level = getLevel(Number(param ?? '1'));
   root.className = 'screen';
+  if (!level || !isUnlocked(LEVELS.map((l) => l.id), level.id, loadProgress())) {
+    root.innerHTML = `
+      <a class="back" href="#/niveles" data-i18n="nav.back"></a>
+      <h1 data-i18n="play.title" tabindex="-1"></h1>
+      <p data-i18n="${level ? 'play.locked' : 'play.notFound'}"></p>
+      <a class="button" href="#/niveles" data-i18n="levels.choose"></a>`;
+    applyTranslations(root);
+    return () => {};
+  }
+  const { id: levelId, exercise } = level;
+  const next = nextLevel(level.id);
+  const { beats, beatUnit } = exercise.timeSignature;
   root.innerHTML = `
-    <a class="back" href="#/" data-i18n="nav.back"></a>
+    <a class="back" href="#/niveles" data-i18n="nav.back"></a>
     <h1 data-i18n="play.title" tabindex="-1"></h1>
     <p data-i18n="play.intro"></p>
-    <p class="note" data-i18n="play.level" data-i18n-params='{"bpm":${exercise.bpm}}'></p>
+    <p class="note level-line"><span data-i18n="levels.number" data-i18n-params='{"n":${level.id}}'></span>
+      <span data-i18n="level.title.${level.id}"></span> · ${beats}/${beatUnit} · ${exercise.bpm} BPM</p>
     <p id="uncalibrated" class="note" hidden>
       <span data-i18n="play.uncalibrated"></span> <a href="#/calibrar" data-i18n="play.calibrate"></a>
     </p>
@@ -60,8 +70,9 @@ export function mountReadAndPlay(root: HTMLElement): () => void {
         <div id="sum-score" class="paper" aria-hidden="true"></div>
       </figure>
       <div class="actions">
+        ${next ? `<a class="button" id="next" href="#/leer/${next.id}" data-i18n="summary.next" hidden></a>` : ''}
         <button type="button" class="button" id="again" data-i18n="summary.again"></button>
-        <a class="button secondary" href="#/" data-i18n="summary.menu"></a>
+        <a class="button secondary" href="#/niveles" data-i18n="levels.choose"></a>
       </div>
     </section>`;
   applyTranslations(root);
@@ -186,6 +197,9 @@ export function mountReadAndPlay(root: HTMLElement): () => void {
   }
 
   async function showSummary(score: RunScore): Promise<void> {
+    recordResult(levelId, score);
+    const nextLink = root.querySelector<HTMLElement>('#next');
+    if (nextLink) nextLink.hidden = !score.passed;
     status.textContent = '';
     game.hidden = true;
     summary.hidden = false;
