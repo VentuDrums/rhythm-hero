@@ -3,8 +3,8 @@
 import { beatsPerMeasure } from '../rhythm/duration';
 import type { TimeSignature } from '../rhythm/types';
 
-/** Margen antes del primer pulso del alumno, para aceptar golpes adelantados (ventana "bien" = 100 ms). */
-export const EARLY_S = 0.15;
+/** Margen antes del primer pulso del alumno, para aceptar golpes adelantados (algo más que la ventana "bien", 150 ms). */
+export const EARLY_S = 0.2;
 /** Golpes que llegan justo después de un sonido de la app se ignoran por si el micro lo ha oído. */
 export const MASK_AFTER_SOUND_S = 0.15;
 

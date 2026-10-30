@@ -43,9 +43,10 @@ detecta cada golpe y el juego lo compara con el ritmo escrito en **notación mus
   - Durante el turno del alumno el pulso solo se ve: una luz o barra que late al tempo y la partitura que avanza. No suena nada.
   - Opción "uso auriculares": mantiene el metrónomo de claves audible durante el turno del alumno. Desactivada por defecto.
 - Ventanas de acierto, configurables y con estos valores por defecto:
-  - **Perfecto**: |error| ≤ 50 ms
-  - **Bien**: |error| ≤ 100 ms
-  - **Fallo**: fuera de ±100 ms o figura sin tocar
+  - **Perfecto**: |error| ≤ 75 ms
+  - **Bien**: |error| ≤ 150 ms
+  - **Fallo**: fuera de ±150 ms o figura sin tocar
+  - Valores ampliados el 2026-10-30 a petición de Carlos (antes 50/100 ms): con márgenes estrictos el alumnado se frustra.
   - **Golpe sobrante**: golpe que no corresponde a ninguna figura (resta puntos)
 - Feedback por figura: color y etiqueta (perfecto, bien, adelantado, atrasado o fallo).
 - Resumen final: % de precisión, desglose y estrellas (1–3). Un nivel se supera con ≥ 70 % (configurable).
@@ -63,7 +64,7 @@ detecta cada golpe y el juego lo compara con el ritmo escrito en **notación mus
   para que 25 palmas algo desfasadas cuenten como un solo golpe colectivo.
 - **Ventana de escucha** (evita que el micro oiga a la propia app): el micrófono se abre una sola vez al empezar la partida
   para no retrasar nada, pero los golpes solo cuentan dentro del turno del alumno.
-  La ventana se abre poco antes de la primera figura (≥ 100 ms, para aceptar golpes adelantados) y se cierra tras la última.
+  La ventana se abre poco antes de la primera figura (al menos la ventana "bien", para aceptar golpes adelantados) y se cierra tras la última.
   Como refuerzo, se ignoran los *onsets* en los 150 ms siguientes a cualquier sonido de la app.
 - El micro se pide **sin procesado del navegador** (`echoCancellation`, `noiseSuppression` y `autoGainControl` desactivados): ese procesado puede apagar o deformar las palmadas, y con la regla de turnos la cancelación de eco no hace falta.
 - El detector es una **función pura** (muestras → lista de tiempos) para poder probarla con grabaciones reales de palmas y mesa.

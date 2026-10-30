@@ -14,7 +14,7 @@ describe('ReadAndPlayRun', () => {
     expect(run.plan.countIn).toEqual([10, 11, 12, 13]);
     expect(run.studentStart).toBe(14);
     expect(run.expected).toEqual([14, 15, 16, 17, 18, 19, 20, 21]);
-    expect(run.end).toBeCloseTo(22.1);
+    expect(run.end).toBeCloseTo(22.15);
   });
 
   it('scores a perfect run from simulated claps', () => {
@@ -33,8 +33,8 @@ describe('ReadAndPlayRun', () => {
 
   it('accepts a slightly early first clap and a late last one', () => {
     const run = new ReadAndPlayRun(twoBars, { startTime: 10 });
-    expect(run.hit(13.92)).toEqual({ index: 0, judgement: 'early' });
-    expect(run.hit(21.09)).toEqual({ index: 7, judgement: 'late' });
+    expect(run.hit(13.88)).toEqual({ index: 0, judgement: 'early' });
+    expect(run.hit(21.13)).toEqual({ index: 7, judgement: 'late' });
   });
 
   it('subtracts the calibrated latency from every clap', () => {
@@ -46,10 +46,10 @@ describe('ReadAndPlayRun', () => {
   it('marks a note as missed live once its window has passed', () => {
     const run = new ReadAndPlayRun(twoBars, { startTime: 10 });
     run.hit(14);
-    expect(run.missesUntil(15.05)).toEqual([]);
+    expect(run.missesUntil(15.1)).toEqual([]);
     expect(run.missesUntil(15.2)).toEqual([{ index: 1, judgement: 'miss' }]);
     expect(run.missesUntil(15.3)).toEqual([]); // no se repite
-    expect(run.hit(15.15)).toBeNull(); // ni un golpe tardío la recupera
+    expect(run.hit(15.14)).toBeNull(); // ni un golpe tardío la recupera
   });
 
   it('counts claps that match no note as extra in the final score', () => {

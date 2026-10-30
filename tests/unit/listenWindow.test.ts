@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { acceptOnsets, EARLY_S, isShownOnset, MASK_AFTER_SOUND_S, planTurn } from '../../src/audio/listenWindow';
+import { DEFAULT_SCORE_OPTIONS } from '../../src/scoring/score';
 
 describe('planTurn', () => {
   it('plays one measure of claves, then listens silently during the student measures', () => {
@@ -32,8 +33,14 @@ describe('acceptOnsets', () => {
     ]);
   });
 
-  it('opens early enough to accept a clap up to 100 ms ahead of the first beat', () => {
-    expect(EARLY_S).toBeGreaterThanOrEqual(0.1);
+  it('opens early enough to accept a clap as early as the "good" window allows', () => {
+    expect(EARLY_S).toBeGreaterThanOrEqual(DEFAULT_SCORE_OPTIONS.goodS);
+  });
+
+  it('never accepts the last clave as an early clap, even at 160 BPM', () => {
+    const plan = planTurn({ timeSignature: { beats: 4, beatUnit: 4 }, bpm: 160, startTime: 0, studentMeasures: 1 });
+    const lastClave = plan.countIn.at(-1) as number;
+    expect(lastClave + MASK_AFTER_SOUND_S).toBeLessThanOrEqual(plan.listen.open);
   });
 });
 

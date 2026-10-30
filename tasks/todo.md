@@ -130,7 +130,7 @@ perfecto, bien (adelantado o atrasado) o fallo. Cuenta los golpes sobrantes, inc
 **Acceptance criteria:**
 - [x] Cada figura recibe exactamente una clasificación. Un golpe no puede valer para dos figuras
 - [x] Los golpes sobrantes y los que caen en silencio restan según la regla del SPEC
-- [x] Las ventanas (50/100 ms) y el umbral de superación (70 %) son configurables
+- [x] Las ventanas (75/150 ms desde el 2026-10-30; antes 50/100) y el umbral de superación (70 %) son configurables
 
 **Verification:**
 - [x] Tests pass: `npm test -- scoring`

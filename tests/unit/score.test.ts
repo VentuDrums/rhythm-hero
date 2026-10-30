@@ -13,20 +13,27 @@ describe('scoreRun', () => {
     expect(score).toMatchObject({ perfect: 4, good: 0, miss: 0, extra: 0, percent: 100, passed: true, stars: 3 });
   });
 
-  it('labels hits between 50 and 100 ms as early or late, with the error in ms', () => {
-    const score = scoreRun(quarters, [-0.07, 1.08, 2, 3]);
-    expect(score.notes[0]).toEqual({ judgement: 'early', errorMs: -70 });
-    expect(score.notes[1]).toEqual({ judgement: 'late', errorMs: 80 });
+  it('is forgiving: up to 75 ms is still perfect', () => {
+    const score = scoreRun(quarters, [-0.07, 1.06, 2.074, 2.93]);
+    expect(score.notes.map((n) => n.judgement)).toEqual(['perfect', 'perfect', 'perfect', 'perfect']);
+    expect(score.percent).toBe(100);
+  });
+
+  it('labels hits between 75 and 150 ms as early or late, with the error in ms', () => {
+    const score = scoreRun(quarters, [-0.12, 1.1, 2, 3]);
+    expect(score.notes[0]).toEqual({ judgement: 'early', errorMs: -120 });
+    expect(score.notes[1]).toEqual({ judgement: 'late', errorMs: 100 });
     expect(score.good).toBe(2);
     expect(score.percent).toBe(75); // (1 + 1 + 0.5 + 0.5) / 4
   });
 
-  it('accepts exactly 50 ms as perfect and exactly 100 ms as good', () => {
-    const score = scoreRun([1, 2, 3], [1.05, 2.1, 2.9]);
+  it('accepts exactly 75 ms as perfect and exactly 150 ms as good', () => {
+    expect(DEFAULT_SCORE_OPTIONS).toMatchObject({ perfectS: 0.075, goodS: 0.15 });
+    const score = scoreRun([1, 2, 3], [1.075, 2.15, 2.85]);
     expect(score.notes.map((n) => n.judgement)).toEqual(['perfect', 'late', 'early']);
   });
 
-  it('marks notes without a hit within 100 ms as missed', () => {
+  it('marks notes without a hit within 150 ms as missed', () => {
     const score = scoreRun(quarters, [0, 1.2, 3]);
     expect(score.notes.map((n) => n.judgement)).toEqual(['perfect', 'miss', 'miss', 'perfect']);
     expect(score.notes[1]).toEqual({ judgement: 'miss', errorMs: null });

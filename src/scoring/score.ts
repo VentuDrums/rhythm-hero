@@ -18,7 +18,8 @@ export interface ScoreOptions {
   passPercent: number;
 }
 
-export const DEFAULT_SCORE_OPTIONS: ScoreOptions = { perfectS: 0.05, goodS: 0.1, passPercent: 70 };
+/** Ventanas pensadas para alumnado de ESO: permisivas para no frustrar (petición de Carlos, 2026-10-30). */
+export const DEFAULT_SCORE_OPTIONS: ScoreOptions = { perfectS: 0.075, goodS: 0.15, passPercent: 70 };
 
 /** Puntos de cada resultado. Un golpe sobrante resta lo mismo que vale un "bien". */
 const POINTS = { perfect: 1, good: 0.5, extra: -0.5 };
@@ -56,7 +57,7 @@ export function matchHits(expected: number[], hits: number[], windowS: number): 
   return byNote;
 }
 
-/** Margen mínimo para que 50 ms exactos no se pierdan por el redondeo de los decimales. */
+/** Margen mínimo para que el límite exacto (p. ej. 75 ms) no se pierdan por el redondeo de los decimales. */
 const EPSILON_S = 1e-9;
 
 export function judge(errorS: number, options: ScoreOptions): Judgement {
