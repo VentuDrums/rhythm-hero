@@ -31,3 +31,22 @@ export function setLatency(seconds: number): boolean {
     return false;
   }
 }
+
+const UNLOCK_ALL_KEY = 'rhythm-hero.unlockAll';
+let unlockAllInMemory = false;
+
+/** Opción del profesor: todos los niveles abiertos en este dispositivo. */
+export function getUnlockAll(): boolean {
+  const raw = read(UNLOCK_ALL_KEY);
+  return raw === null ? unlockAllInMemory : raw === 'true';
+}
+
+export function setUnlockAll(value: boolean): void {
+  unlockAllInMemory = value;
+  try {
+    localStorage.setItem(UNLOCK_ALL_KEY, String(value));
+  } catch {
+    // Sin almacenamiento: la opción vale hasta cerrar la página.
+    return;
+  }
+}

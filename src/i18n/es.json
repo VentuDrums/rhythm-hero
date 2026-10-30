@@ -95,5 +95,8 @@
   "levels.choose": "Elegir nivel",
   "play.locked": "Este nivel aún está bloqueado. Supera el anterior para abrirlo.",
   "play.notFound": "Ese nivel no existe.",
-  "summary.next": "Siguiente nivel"
+  "summary.next": "Siguiente nivel",
+  "levels.teacherNote": "Para profesores: abre todos los niveles en este dispositivo, por ejemplo para usarlos en clase.",
+  "levels.unlockAll": "Desbloquear todos los niveles",
+  "levels.lockAgain": "Volver a bloquear los niveles"
 }

@@ -95,5 +95,8 @@
   "levels.choose": "Choose level",
   "play.locked": "This level is still locked. Pass the previous one to open it.",
   "play.notFound": "That level doesn't exist.",
-  "summary.next": "Next level"
+  "summary.next": "Next level",
+  "levels.teacherNote": "For teachers: open every level on this device, for example to use them in class.",
+  "levels.unlockAll": "Unlock all levels",
+  "levels.lockAgain": "Lock the levels again"
 }

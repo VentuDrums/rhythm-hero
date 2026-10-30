@@ -9,7 +9,7 @@ import { xAtTicks } from '../notation/scroll';
 import { getLevel, LEVELS, nextLevel } from '../levels';
 import { beatTicks, measureTicks } from '../rhythm/duration';
 import { isUnlocked, loadProgress, recordResult } from '../storage/progress';
-import { getLatency } from '../storage/settings';
+import { getLatency, getUnlockAll } from '../storage/settings';
 import { DEFAULT_SCORE_OPTIONS, type Judgement, type RunScore } from '../scoring/score';
 
 const LEAD_IN_S = 0.4;
@@ -20,7 +20,7 @@ const HIT_LINE = 0.25;
 export function mountReadAndPlay(root: HTMLElement, param?: string): () => void {
   const level = getLevel(Number(param ?? '1'));
   root.className = 'screen';
-  if (!level || !isUnlocked(LEVELS.map((l) => l.id), level.id, loadProgress())) {
+  if (!level || !(getUnlockAll() || isUnlocked(LEVELS.map((l) => l.id), level.id, loadProgress()))) {
     root.innerHTML = `
       <a class="back" href="#/niveles" data-i18n="nav.back"></a>
       <h1 data-i18n="play.title" tabindex="-1"></h1>

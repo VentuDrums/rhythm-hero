@@ -57,3 +57,21 @@ test('todos los niveles se dibujan sin errores', async ({ page }) => {
   }
   expect(errors).toEqual([]);
 });
+
+test('el profesor puede desbloquear todos los niveles y volver a bloquearlos', async ({ page }) => {
+  await page.goto('/#/niveles');
+  await expect(page.getByRole('link', { name: /Nivel \d+:/ })).toHaveCount(1);
+  await page.getByRole('button', { name: 'Desbloquear todos los niveles' }).click();
+  await expect(page.getByRole('link', { name: /Nivel \d+:/ })).toHaveCount(12);
+  await expect(page.getByRole('button', { name: 'Volver a bloquear los niveles' })).toBeFocused();
+  await expectNoSeriousA11yViolations(page);
+
+  await page.reload();
+  await page.getByRole('link', { name: /Nivel 12:/ }).click();
+  await expect(page.getByText('Repaso', { exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Empezar' })).toBeVisible();
+
+  await page.goto('/#/niveles');
+  await page.getByRole('button', { name: 'Volver a bloquear los niveles' }).click();
+  await expect(page.getByRole('link', { name: /Nivel \d+:/ })).toHaveCount(1);
+});

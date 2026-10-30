@@ -101,3 +101,34 @@ describe('settings: latency', () => {
     expect(getLatency()).toBe(0.1);
   });
 });
+
+describe('settings: unlock all levels', () => {
+  beforeEach(() => vi.resetModules());
+  afterEach(() => {
+    localStorage.clear();
+    vi.restoreAllMocks();
+  });
+
+  it('is off until the teacher turns it on, and is remembered', async () => {
+    const first = await import('../../src/storage/settings');
+    expect(first.getUnlockAll()).toBe(false);
+    first.setUnlockAll(true);
+    vi.resetModules();
+    const reopened = await import('../../src/storage/settings');
+    expect(reopened.getUnlockAll()).toBe(true);
+    reopened.setUnlockAll(false);
+    expect(reopened.getUnlockAll()).toBe(false);
+  });
+
+  it('lasts for this page when the browser blocks storage', async () => {
+    const { getUnlockAll, setUnlockAll } = await import('../../src/storage/settings');
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    setUnlockAll(true);
+    expect(getUnlockAll()).toBe(true);
+  });
+});
