@@ -31,14 +31,17 @@ export function chooseLang(lang: Lang): void {
   }
 }
 
+function savedLang(): string | null {
+  try {
+    return localStorage.getItem(LANG_KEY);
+  } catch {
+    return null;
+  }
+}
+
 /** Idioma al abrir: el elegido antes; si no, el del navegador (inglés si empieza por "en"); si no, español. */
 export function initialLang(browserLang = navigator.language): Lang {
-  let saved: string | null = null;
-  try {
-    saved = localStorage.getItem(LANG_KEY);
-  } catch {
-    saved = null;
-  }
+  const saved = savedLang();
   if (saved === 'es' || saved === 'en') return saved;
   return browserLang.toLowerCase().startsWith('en') ? 'en' : 'es';
 }
