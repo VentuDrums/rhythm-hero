@@ -206,7 +206,7 @@ y guardado por dispositivo. Leer y tocar la descuenta. Se puede repetir desde aj
 ## Checkpoint 2: se puede jugar un nivel completo
 - [x] Tests en verde y build limpio
 - [ ] Criterio 3 del SPEC comprobado en PC y móvil
-- [ ] Revisión con Carlos
+- [x] Revisión con Carlos (2026-10-30: "Todo bien por ahora")
 
 ---
 
@@ -335,7 +335,7 @@ Las opciones incorrectas se generan parecidas a la correcta (cambiando una o dos
 ## Checkpoint 3: los tres modos jugables desde el menú
 - [ ] Tests en verde y build limpio
 - [ ] Criterio 4 del SPEC comprobado
-- [ ] Revisión con Carlos
+- [x] Revisión con Carlos (2026-10-30: "Todo bien por ahora")
 
 ---
 
